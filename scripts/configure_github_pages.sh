@@ -81,13 +81,15 @@ main() {
     --arg cname "$CUSTOM_DOMAIN" \
     --arg branch "$SOURCE_BRANCH" \
     --arg path "$SOURCE_PATH" \
-    --argjson https_enforced "$ENFORCE_HTTPS" \
     '{
       cname: $cname,
       build_type: "legacy",
-      source: {branch: $branch, path: $path},
-      https_enforced: $https_enforced
+      source: {branch: $branch, path: $path}
     }')"
+
+  if [ "$ENFORCE_HTTPS" = "true" ]; then
+    update_payload="$(jq '. + {https_enforced: true}' <<<"$update_payload")"
+  fi
 
   echo "Checking GitHub Pages site for $OWNER/$REPO"
   response="$(github_request GET "$pages_path")"

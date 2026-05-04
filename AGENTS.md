@@ -22,6 +22,7 @@ This repository is a small static holding page for `https://healthybrain.ai`.
 - Credential template: `.env.local.example`
 - Credential validator: `scripts/check_healthybrain_credentials.sh`
 - Porkbun DNS automation: `scripts/configure_porkbun_dns.sh`
+- GitHub Pages verification TXT helper: `scripts/add_github_pages_verification_txt.sh`
 - GitHub Pages automation: `scripts/configure_github_pages.sh`
 
 ## Safety

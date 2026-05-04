@@ -51,6 +51,39 @@ Resource not accessible by personal access token
 edit the GitHub token and confirm `healthybrain.ai` has `Pages: read and write`.
 Repository admin access alone is not sufficient for the Pages API.
 
+If it returns:
+
+```text
+Invalid cname
+The custom domain `healthybrain.ai` is already taken.
+```
+
+verify `healthybrain.ai` in GitHub account settings:
+
+1. Open `https://github.com/settings/pages`.
+2. Under `Verified domains`, add `healthybrain.ai`.
+3. GitHub will show a TXT record name and value.
+4. Add that TXT record in Porkbun.
+5. Keep the TXT record after verification.
+
+This repository includes a helper for step 4:
+
+```bash
+GITHUB_PAGES_VERIFY_VALUE="<value from GitHub>" ./scripts/add_github_pages_verification_txt.sh
+```
+
+Then confirm DNS propagation:
+
+```bash
+dig _github-pages-challenge-wolfgang-ganglberger.healthybrain.ai +nostats +nocomments +nocmd TXT
+```
+
+After GitHub verifies the domain, re-run:
+
+```bash
+./scripts/configure_github_pages.sh
+```
+
 ## Porkbun DNS
 
 Remove conflicting default root and `www` records, then add:
@@ -74,6 +107,10 @@ API automation:
 ```
 
 Porkbun API access must be enabled for `healthybrain.ai`.
+
+The DNS automation removes Porkbun's default wildcard record (`*.healthybrain.ai`
+to `pixie.porkbun.com`) because wildcard records increase GitHub Pages takeover
+risk and can interfere with the GitHub verification TXT lookup.
 
 ## Credential Setup
 

@@ -21,6 +21,13 @@ domain.
 
 See `docs/deployment-plan.md` for GitHub and Porkbun setup.
 
+If GitHub says `healthybrain.ai` is already taken, verify the domain in GitHub
+account Pages settings and add the TXT record with:
+
+```bash
+GITHUB_PAGES_VERIFY_VALUE="<value from GitHub>" ./scripts/add_github_pages_verification_txt.sh
+```
+
 ## Automation Credentials
 
 Scripts load credentials from `.env.local` if present. If not present, they also
