@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthyBrain.ai — A Future Project by Wolfgang Ganglberger</title>
+    <meta
+      name="description"
+      content="HealthyBrain.ai is a future project by Wolfgang Ganglberger, focused on brain health, sleep science, physiology, and artificial intelligence."
+    >
+    <link rel="canonical" href="https://healthybrain.ai/">
+    <meta property="og:title" content="HealthyBrain.ai">
+    <meta
+      property="og:description"
+      content="A future brain-health project by Wolfgang Ganglberger."
+    >
+    <meta property="og:url" content="https://healthybrain.ai/">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#f4efe4">
+    <style>
+      :root {
+        --bg: #f4efe4;
+        --ink: #202522;
+        --muted: #667067;
+        --line: rgba(32, 37, 34, 0.18);
+        --card: rgba(255, 252, 244, 0.76);
+        --accent: #557a62;
+        --accent-dark: #2f5c42;
+        --warm: #c78b5d;
+        --shadow: 0 24px 80px rgba(32, 37, 34, 0.12);
+        --heading: "Avenir Next", "Futura", "Century Gothic", sans-serif;
+        --body: "Iowan Old Style", "Palatino", "Georgia", serif;
+        --label: "SF Mono", "Menlo", "Consolas", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        background: var(--bg);
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        font-family: var(--body);
+        background:
+          radial-gradient(circle at 18% 20%, rgba(199, 139, 93, 0.18), transparent 30%),
+          radial-gradient(circle at 80% 18%, rgba(85, 122, 98, 0.16), transparent 28%),
+          linear-gradient(135deg, #f8f2e7 0%, #e9eee8 52%, #f2eadf 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(32, 37, 34, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(32, 37, 34, 0.03) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 78%);
+      }
+
+      main {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: 32px;
+      }
+
+      .card {
+        position: relative;
+        width: min(900px, 100%);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-top: 10px solid rgba(85, 122, 98, 0.36);
+        pointer-events: none;
+      }
+
+      .inner {
+        display: grid;
+        gap: 44px;
+        padding: clamp(28px, 7vw, 76px);
+      }
+
+      .kicker {
+        margin: 0;
+        color: var(--accent-dark);
+        font-family: var(--label);
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 12ch;
+        font-family: var(--heading);
+        font-size: clamp(3.6rem, 12vw, 8.8rem);
+        font-weight: 700;
+        letter-spacing: -0.08em;
+        line-height: 0.82;
+        text-transform: uppercase;
+      }
+
+      .statement {
+        display: grid;
+        gap: 24px;
+        max-width: 680px;
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(1.28rem, 2.8vw, 2.1rem);
+        line-height: 1.18;
+      }
+
+      .copy {
+        margin: 0;
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+      }
+
+      .footer p {
+        margin: 0;
+        color: var(--muted);
+        font-family: var(--label);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid rgba(47, 92, 66, 0.34);
+        border-radius: 999px;
+        color: #173a27;
+        font-family: var(--label);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.42);
+        transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+      }
+
+      a:hover {
+        border-color: rgba(47, 92, 66, 0.72);
+        background: rgba(255, 255, 255, 0.72);
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 640px) {
+        main {
+          padding: 18px;
+        }
+
+        .card {
+          border-radius: 22px;
+        }
+
+        .inner {
+          gap: 34px;
+        }
+
+        .footer {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "HealthyBrain.ai",
+        "url": "https://healthybrain.ai/",
+        "description": "A future brain-health project by Wolfgang Ganglberger."
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <section class="card" aria-labelledby="site-title">
+        <div class="inner">
+          <div>
+            <p class="kicker">Brain health · sleep science · artificial intelligence</p>
+            <h1 id="site-title">Healthy Brain</h1>
+          </div>
+
+          <div class="statement">
+            <p class="lead">
+              HealthyBrain.ai is a future project by Wolfgang Ganglberger.
+            </p>
+            <p class="copy">
+              The work is developing around sleep, physiology, brain health, and
+              AI systems that help make biological signals more useful for how
+              people live, recover, and age.
+            </p>
+          </div>
+
+          <div class="footer">
+            <p>Project page in reserve</p>
+            <a href="https://wolfgangganglberger.com">Visit WolfgangGanglberger.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
