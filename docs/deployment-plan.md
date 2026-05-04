@@ -42,6 +42,15 @@ For a fine-grained GitHub token, give this repository:
 If using the same token as the personal website, make sure the token is allowed
 to access both repositories.
 
+If `./scripts/configure_github_pages.sh` returns:
+
+```text
+Resource not accessible by personal access token
+```
+
+edit the GitHub token and confirm `healthybrain.ai` has `Pages: read and write`.
+Repository admin access alone is not sufficient for the Pages API.
+
 ## Porkbun DNS
 
 Remove conflicting default root and `www` records, then add:
